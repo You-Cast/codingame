@@ -11,6 +11,7 @@ void logd(String aStr, [bool aNextLine=true]) {
   stderr.write(aStr+(aNextLine ? "\n" : ""));
 }
 
+// Enhanced enum not supported by codingame dev pad, so simulate with a regular class...
 class Direction {
   static final top    = Direction("TOP",    0,  -1);
   static final right  = Direction("RIGHT",  1, 0);
@@ -28,6 +29,7 @@ class Direction {
   final int    _dy;
 
   Direction get from {
+    // switch expression not supported by codigngame dev pad...
     if (Direction.top == this ) { return Direction.bottom; }
     else if (Direction.right == this) { return Direction.left; }
     else if (Direction.bottom == this) { return Direction.top; }
@@ -109,8 +111,8 @@ class Pair {
 }
 
 class IndiPos {
-  final int _x;
-  final int _y;
+  final int       _x;
+  final int       _y;
   final Direction _pos;
 
   IndiPos(this._x, this._y, this._pos) {}
@@ -221,7 +223,7 @@ class Game {
 }
 
 void main() {
-    Game vGame=Game.read();
-    vGame.logTunnel();
-    vGame.loop();
+    Game.read()
+        .logTunnel()
+        .loop();
 }
